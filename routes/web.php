@@ -17,8 +17,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test/moretest/somemoretext', array('as' => 'test.home', function () {
-    $url = route('test.home');
+Route::get('/contact', function () {
+    return view('contact');
+});
 
-    return "checkout this url ". $url;
-}));
+Route::get('/about', function () {
+    return view('about');
+});
+
+
+//cleaner
+// Route::view('/', 'welcome');
+// Route::view('contact', 'contact');
+// Route::view('about', 'about');
+
+
+//passing data to views
+//we use the '.' or '/' to move between directories
+Route::get('customers', function () {
+    $customers = [
+      'Mr A',
+      'Mr b',
+      'Mr c',
+    ];
+    return view('internals.customers',['customers' => $customers]);
+});
