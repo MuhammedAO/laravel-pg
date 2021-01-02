@@ -34,11 +34,16 @@ Route::get('/about', function () {
 
 //passing data to views
 //we use the '.' or '/' to move between directories
-Route::get('customers', function () {
-    $customers = [
-      'Mr A',
-      'Mr b',
-      'Mr c',
-    ];
-    return view('internals.customers',['customers' => $customers]);
-});
+
+// Route::get('customers', function () {
+//     $customers = [
+//       'Mr A',
+//       'Mr b',
+//       'Mr c',
+//     ];
+//     return view('internals.customers',['customers' => $customers]);
+// });
+
+
+//controllers
+Route::get('customers', 'CustomersController@list');
