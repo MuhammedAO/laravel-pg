@@ -46,5 +46,5 @@ Route::get('/about', function () {
 
 
 //controllers
-Route::get('customers', 'CustomersController@list');
+Route::get('customers', 'CustomersController@list')->name('customers');
 Route::post('customers', 'CustomersController@store');

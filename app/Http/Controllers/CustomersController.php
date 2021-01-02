@@ -14,11 +14,12 @@ class CustomersController extends Controller
     return view('internals.customers', ['customers' => $customers]);
   }
 
-  public function store(){
+  public function store()
+  {
 
     $data = request()->validate([
       'name' => 'required|min:3',
-      'email'=> 'required|email'
+      'email' => 'required|email'
     ]);
 
     $customer = new Customer();
@@ -27,6 +28,5 @@ class CustomersController extends Controller
     $customer->save();
 
     return back();
-
-    }
+  }
 }
