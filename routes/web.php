@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 
 //cleaner
@@ -47,3 +47,4 @@ Route::get('/about', function () {
 
 //controllers
 Route::get('customers', 'CustomersController@list');
+Route::post('customers', 'CustomersController@store');
