@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>@yield('title', 'Laravel pg')</title>
 </head>
-<style>
-    ul {
-        list-style-type: none;
-    }
-
-</style>
 
 <body>
     <div class="container">
