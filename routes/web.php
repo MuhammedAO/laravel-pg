@@ -26,26 +26,9 @@ Route::get('/about', function () {
 })->name('about');
 
 
-//cleaner
-// Route::view('/', 'welcome');
-// Route::view('contact', 'contact');
-// Route::view('about', 'about');
-
-
-//passing data to views
-//we use the '.' or '/' to move between directories
-
-// Route::get('customers', function () {
-//     $customers = [
-//       'Mr A',
-//       'Mr b',
-//       'Mr c',
-//     ];
-//     return view('internals.customers',['customers' => $customers]);
-// });
-
 
 //controllers
 Route::get('customers', 'CustomersController@index')->name('customers');
 Route::get('customers/create', 'CustomersController@create')->name('customers.create');
 Route::post('customers', 'CustomersController@store');
+Route::get('customers/{customer}', 'CustomersController@show');

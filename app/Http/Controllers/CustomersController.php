@@ -10,7 +10,7 @@ class CustomersController extends Controller{
 
   public function index(){
     $customers = Customer::all();
-    
+
     return view('customers.index', compact('customers'));
   }
 
@@ -34,5 +34,11 @@ class CustomersController extends Controller{
     Customer::create($data);
 
     return redirect('customers');
+  }
+
+  //Route model binding for a show view
+  public function show(Customer $customer) {
+    // $customer = Customer::where('id', $customer)->firstOrFail();
+    return view('customers.show', compact('customer'));
   }
 }
