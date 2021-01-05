@@ -6,17 +6,18 @@ use App\Models\Company;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class CustomersController extends Controller
-{
-  public function list()
+class CustomersController extends Controller{
+
+  public function index(){
+    $customers = Customer::all();
+    
+    return view('customers.index', compact('customers'));
+  }
+
+  public function create()
   {
-    $activeCustomers = Customer::active()->get();
-    $inactiveCustomers = Customer::inactive()->get();
-
     $companies = Company::all();
-
-
-    return view('internals.customers', compact('activeCustomers', 'inactiveCustomers', 'companies'));
+    return view('customers.create', compact('companies'));
   }
 
   public function store()
@@ -29,10 +30,9 @@ class CustomersController extends Controller
       'company_id' => 'required',
     ]);
 
-
     //mass assignment
     Customer::create($data);
 
-    return back();
+    return redirect('customers');
   }
 }
