@@ -24,16 +24,8 @@ class CustomersController extends Controller
 
   public function store()
   {
-
-    $data = request()->validate([
-      'name' => 'required|min:3',
-      'email' => 'required|email',
-      'active' => 'required',
-      'company_id' => 'required',
-    ]);
-
     //mass assignment
-    Customer::create($data);
+    Customer::create($this->validateRequest());
 
     return redirect('customers');
   }
@@ -54,13 +46,24 @@ class CustomersController extends Controller
 
   public function update(Customer $customer)
   {
-    $data = request()->validate([
-      'name' => 'required|min:3',
-      'email' => 'required|email',
-    ]);
-
-    $customer->update($data);
+    $customer->update($this->validateRequest());
 
     return redirect('customers/' . $customer->id);
+  }
+
+  public function destroy(Customer $customer)
+  {
+    $customer->delete();
+    return redirect('customers');
+  }
+
+  public function validateRequest()
+  {
+    return request()->validate([
+      'name' => 'required|min:3',
+      'email' => 'required|email',
+      'active' => 'required',
+      'company_id' => 'required',
+    ]);
   }
 }

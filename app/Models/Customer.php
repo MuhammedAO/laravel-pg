@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class Customer extends Model
 {
@@ -11,16 +12,17 @@ class Customer extends Model
 
     protected $guarded = [];
 
+    protected $attributes = [
+     'active' => 0
+    ];
+
     //eloquent accessors
     //mutator allows you to alter data before it's saved to a database.
     // On the other hand, the accessor allows you to alter data after it's fetched from a database.
     //naming convention => get+column_name+attr
     public function getActiveAttribute($attribute)
     {
-        return [
-            0 => 'Inactive',
-            1 => 'active'
-        ][$attribute];
+       return $this->activeOptions()[$attribute];
     }
 
     //eloquent scopes
@@ -39,5 +41,12 @@ class Customer extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function activeOptions(){
+        return [
+            1 => 'active',
+            0 => 'Inactive'
+        ];
     }
 }
