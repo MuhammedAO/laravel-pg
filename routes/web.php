@@ -13,21 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::view('/', 'welcome')->name('welcome');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('contact', 'ContactFormController@create')->name('contact');
+Route::post('contact', 'ContactFormController@store');
+
+Route::view('about', 'about')->name('about');
 
 
 
-//controllers
+//customer controllers
 Route::get('customers', 'CustomersController@index')->name('customers');
 Route::get('customers/create', 'CustomersController@create')->name('customers.create');
 Route::post('customers', 'CustomersController@store');
