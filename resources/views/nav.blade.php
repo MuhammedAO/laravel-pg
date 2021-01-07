@@ -18,7 +18,7 @@
                     <a class="nav-link active" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('contact') }}">contact</a>
+                    <a class="nav-link active" href="{{ route('contact.create') }}">contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('customers') }}">customers</a>

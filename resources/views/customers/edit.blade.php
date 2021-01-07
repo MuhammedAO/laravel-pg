@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <h1>Edit Details for {{ $customer->name }}</h1>
-            <form action="/customers/{{ $customer->id }}" method="POST">
+            <form action="{{ route('customers.update', ['customer' => $customer]) }}" method="POST">
                 @method('PATCH')
                 @include('customers.form')
                 <button type="submit" class="btn btn-success mt-2">Save Customer</button>
