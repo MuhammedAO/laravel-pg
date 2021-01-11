@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    {{-- <my-button type="button" text="My Btn!"></my-button> --}}
                 </div>
             </div>
         </div>
